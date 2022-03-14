@@ -1,19 +1,19 @@
-let currentDate = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[currentDate.getDay()];
-let hour = currentDate.getHours();
-let minutes = currentDate.getMinutes();
-let dayTime = document.querySelector("#current-day-time");
-
 function displayDayAndTime() {
+  let currentDate = new Date();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[currentDate.getDay()];
+  let hour = currentDate.getHours();
+  let minutes = currentDate.getMinutes();
+  let dayTime = document.querySelector("#current-day-time");
+
   if (minutes < 10) {
     minutes = "0" + currentDate.getMinutes();
   }
