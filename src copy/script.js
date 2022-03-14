@@ -38,28 +38,27 @@ function displayDayAndTime() {
 
 function displayTemperature(response) {
   console.log(response.data);
-  let fahrenheitUnits = document.querySelector("#temperature-units");
   let temperature = Math.round(response.data.main.temp);
   let subHeading = document.querySelector("#current-temperature");
   subHeading.innerHTML = `${temperature}`;
-  fahrenheitUnits.innerHTML = "°F";
+  document.querySelector("#temperature-units").innerHTML = "°F";
 
   function getCelsius(event) {
     let celsius = Math.round((5 / 9) * (temperature - 32));
-    let celsiusUnits = document.querySelector("#temperature-units");
+    document.querySelector("#temperature-units").innerHTML = "°C";
     subHeading.innerHTML = `${celsius}`;
-    celsiusUnits.innerHTML = "°C";
   }
   function getFahrenheit(event) {
-    let fahrenheitUnits = document.querySelector("#temperature-units");
+    document.querySelector("#temperature-units").innerHTML = "°F";
     subHeading.innerHTML = `${temperature}`;
-    fahrenheitUnits.innerHTML = "°F";
   }
-
-  let celsiusButton = document.querySelector("#button-celsius");
-  let fahrenheitButton = document.querySelector("#button-fahrenheit");
-  celsiusButton.addEventListener("click", getCelsius);
-  fahrenheitButton.addEventListener("click", getFahrenheit);
+  function temperatureButtons() {
+    let celsiusButton = document.querySelector("#button-celsius");
+    let fahrenheitButton = document.querySelector("#button-fahrenheit");
+    celsiusButton.addEventListener("click", getCelsius);
+    fahrenheitButton.addEventListener("click", getFahrenheit);
+  }
+  temperatureButtons();
 }
 
 function searchCity(city) {
@@ -101,20 +100,21 @@ function useLocationButton(event) {
 
     function getCelsius(event) {
       let celsius = Math.round((5 / 9) * (temperature - 32));
-      let celsiusUnits = document.querySelector("#temperature-units");
       temperatureHeading.innerHTML = `${celsius}`;
-      celsiusUnits.innerHTML = "°C";
+      document.querySelector("#temperature-units").innerHTML = "°C";
     }
     function getFahrenheit(event) {
-      let fahrenheitUnits = document.querySelector("#temperature-units");
       temperatureHeading.innerHTML = `${temperature}`;
-      fahrenheitUnits.innerHTML = "°F";
+      document.querySelector("#temperature-units").innerHTML = "°F";
     }
 
-    let celsiusButton = document.querySelector("#button-celsius");
-    let fahrenheitButton = document.querySelector("#button-fahrenheit");
-    celsiusButton.addEventListener("click", getCelsius);
-    fahrenheitButton.addEventListener("click", getFahrenheit);
+    function temperatureButtons() {
+      let celsiusButton = document.querySelector("#button-celsius");
+      let fahrenheitButton = document.querySelector("#button-fahrenheit");
+      celsiusButton.addEventListener("click", getCelsius);
+      fahrenheitButton.addEventListener("click", getFahrenheit);
+    }
+    temperatureButtons();
   }
 
   function getCurrentLocation(position) {
