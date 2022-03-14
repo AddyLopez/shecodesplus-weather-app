@@ -62,9 +62,8 @@ function displayTemperature(response) {
 }
 
 function searchCity(city) {
-  let h1 = document.querySelector("h1");
   if (city) {
-    h1.innerHTML = city;
+    document.querySelector("#heading-one").innerHTML = `${city}`;
   } else {
     alert("Please type in the name of a city for the weather.");
   }
@@ -91,12 +90,9 @@ function useLocationButton(event) {
     console.log(response.data.name);
     let temperature = Math.round(response.data.main.temp);
     let cityName = response.data.name;
-    let h1 = document.querySelector("h1");
-    let temperatureHeading = document.querySelector("#current-temperature");
-    let fahrenheitUnits = document.querySelector("#temperature-units");
-    fahrenheitUnits.innerHTML = "°F";
-    h1.innerHTML = `${cityName}`;
-    temperatureHeading.innerHTML = `${temperature}`;
+    document.querySelector("#heading-one").innerHTML = `${cityName}`;
+    document.querySelector("#current-temperature").innerHTML = `${temperature}`;
+    document.querySelector("#temperature-units").innerHTML = "°F";
 
     function getCelsius(event) {
       let celsius = Math.round((5 / 9) * (temperature - 32));
