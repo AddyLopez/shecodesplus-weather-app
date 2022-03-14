@@ -115,8 +115,8 @@ function useLocationButton(event) {
 
   function getCurrentLocation(position) {
     alert("Wait just a moment, please...");
-    let lat = Math.round(position.coords.latitude);
-    let lon = Math.round(position.coords.longitude);
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
     let units = "imperial";
     let apiKey = "59446b2366c35cbe45d81fb3e3545297";
     let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
