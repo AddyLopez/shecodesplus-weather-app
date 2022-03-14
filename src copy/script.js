@@ -62,26 +62,30 @@ function displayTemperature(response) {
   fahrenheitButton.addEventListener("click", getFahrenheit);
 }
 
-function searchCity(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#search-input");
-  let cityInputValue = cityInput.value;
+function searchCity(city) {
   let h1 = document.querySelector("h1");
-  if (cityInputValue) {
-    h1.innerHTML = cityInput.value;
+  if (city) {
+    h1.innerHTML = city;
   } else {
     alert("Please type in the name of a city for the weather.");
   }
   let units = "imperial";
   let apiKey = "59446b2366c35cbe45d81fb3e3545297";
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
-  let apiUrl = `${apiEndpoint}q=${cityInputValue}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `${apiEndpoint}q=${city}&units=${units}&appid=${apiKey}`;
   axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputValue = document.querySelector("#search-input").value;
+  console.log(cityInputValue);
+  searchCity(cityInputValue);
 }
 
 displayDayAndTime();
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", searchCity);
+form.addEventListener("submit", handleSubmit);
 
 function useLocationButton(event) {
   function displayCurrentLocationTemp(response) {
@@ -128,3 +132,5 @@ function useLocationButton(event) {
 
 let locationButton = document.querySelector("#location-button");
 locationButton.addEventListener("click", useLocationButton);
+
+searchCity("New York");
