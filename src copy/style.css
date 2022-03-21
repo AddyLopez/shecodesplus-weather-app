@@ -1,14 +1,12 @@
 h1 {
   font-size: 36px;
-  margin: 0;
   letter-spacing: 2px;
+  margin: 0;
   padding: 6px 0 12px 0;
   text-align: center;
   text-transform: capitalize;
 }
-.search-results p {
-  font-size: 27px;
-}
+
 form {
   text-align: center;
   margin: 10px 0 0 151px;
@@ -25,14 +23,17 @@ input {
   width: 63%;
 }
 img {
-  max-width: 73px;
-  max-height: 73px;
+  max-width: 80px;
+  max-height: 80px;
 }
 
 ul {
+  font-size: 14px;
+  line-height: 28px;
   list-style: none;
   margin: 0;
   padding: 0;
+  text-align: left;
 }
 
 button {
@@ -58,7 +59,47 @@ a:hover {
 }
 .col-4 {
   margin: 0;
-  padding: 10px 10px 10px 12px;
+  padding: 10px 8px 10px 12px;
+}
+
+.right-side {
+  padding: 10px 12px 0 38px;
+}
+
+.temperature {
+  padding: 0;
+}
+
+.date {
+  padding: 10px 0 0 0;
+}
+.weather-conditions {
+  padding: 10px 0 0 0;
+}
+.current-temp {
+  position: relative;
+  right: 5px;
+}
+li.temperature-heading {
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 32px;
+  letter-spacing: 2px;
+  padding: 6px 0 0 0;
+  text-align: center;
+}
+li.description {
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 30px;
+  padding: 5px 0 10px 0;
+  text-align: center;
+  text-transform: lowercase;
+}
+li.last-updated {
+  font-size: 15px;
+  letter-spacing: 2px;
 }
 
 .container {
