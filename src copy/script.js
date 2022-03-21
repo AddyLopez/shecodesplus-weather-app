@@ -1,6 +1,5 @@
 function displayDate() {
   let dateToday = new Date();
-
   let months = [
     "January",
     "February",
@@ -18,14 +17,12 @@ function displayDate() {
   let month = months[dateToday.getMonth()];
   let date = dateToday.getDate();
   let year = dateToday.getFullYear();
-  console.log(month, date, year);
   document.querySelector("#month").innerHTML = `${month}`;
   document.querySelector("#date").innerHTML = `${date}`;
   document.querySelector("#year").innerHTML = `${year}`;
 }
-displayDate();
 
-function displayDayAndTime() {
+function displayWeekdayAndTime() {
   let currentDate = new Date();
   let days = [
     "Sunday",
@@ -63,12 +60,24 @@ function displayDayAndTime() {
   }
 }
 
+function displayWeatherConditions(response) {
+  console.log(response.data);
+  document.querySelector("#feels-like").innerHTML = Math.round(
+    response.data.main.feels_like
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML =
+    Math.round(response.data.wind.speed) + "mph";
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].description;
+}
+
 function displayTemperature(response) {
   console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
   let subHeading = document.querySelector("#current-temperature");
   subHeading.innerHTML = `${temperature}`;
-  document.querySelector("#temperature-units").innerHTML = "°F";
+  document.querySelector("#temperature-units-1").innerHTML = "°F";
 
   function getCelsius(event) {
     let celsius = Math.round((5 / 9) * (temperature - 32));
@@ -76,7 +85,7 @@ function displayTemperature(response) {
     subHeading.innerHTML = `${celsius}`;
   }
   function getFahrenheit(event) {
-    document.querySelector("#temperature-units").innerHTML = "°F";
+    document.querySelector("#temperature-units-1").innerHTML = "°F";
     subHeading.innerHTML = `${temperature}`;
   }
   function temperatureButtons() {
@@ -86,6 +95,7 @@ function displayTemperature(response) {
     fahrenheitButton.addEventListener("click", getFahrenheit);
   }
   temperatureButtons();
+  displayWeatherConditions(response);
 }
 
 function searchCity(city) {
@@ -108,7 +118,6 @@ function handleSubmit(event) {
   searchCity(cityInputValue);
 }
 
-displayDayAndTime();
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
@@ -124,11 +133,11 @@ function useLocationButton(event) {
     function getCelsius(event) {
       let celsius = Math.round((5 / 9) * (temperature - 32));
       temperatureHeading.innerHTML = `${celsius}`;
-      document.querySelector("#temperature-units").innerHTML = "°C";
+      document.querySelector("#temperature-units-1").innerHTML = "°C";
     }
     function getFahrenheit(event) {
       temperatureHeading.innerHTML = `${temperature}`;
-      document.querySelector("#temperature-units").innerHTML = "°F";
+      document.querySelector("#temperature-units-1").innerHTML = "°F";
     }
 
     function temperatureButtons() {
@@ -156,4 +165,6 @@ function useLocationButton(event) {
 let locationButton = document.querySelector("#location-button");
 locationButton.addEventListener("click", useLocationButton);
 
+displayDate();
+displayWeekdayAndTime();
 searchCity("New York");
