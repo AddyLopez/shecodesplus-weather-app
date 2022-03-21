@@ -61,7 +61,10 @@ function displayWeekdayAndTime() {
 }
 
 function displayWeatherConditions(response) {
-  console.log(response.data);
+  let icon = response.data.weather[0].icon;
+  document.querySelector(
+    "#main-icon"
+  ).innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.main.feels_like
   );
@@ -70,27 +73,32 @@ function displayWeatherConditions(response) {
     Math.round(response.data.wind.speed) + "mph";
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
-  let icon = response.data.weather[0].icon;
-  document.querySelector(
-    "#main-icon"
-  ).innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
 }
 
 function displayTemperature(response) {
   console.log(response.data);
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = response.data.main.temp;
+  let feelsLikeTemperature = response.data.main.feels_like;
   let subHeading = document.querySelector("#current-temperature");
-  subHeading.innerHTML = `${temperature}`;
+  subHeading.innerHTML = `${Math.round(temperature)}`;
   document.querySelector("#temperature-units-1").innerHTML = "°F";
+  document.querySelector("#temperature-units-2").innerHTML = "°F";
 
   function getCelsius(event) {
     let celsius = Math.round((5 / 9) * (temperature - 32));
-    document.querySelector("#temperature-units").innerHTML = "°C";
+    let celsiusFeelsLike = Math.round((5 / 9) * (feelsLikeTemperature - 32));
+    document.querySelector("#temperature-units-1").innerHTML = "°C";
+    document.querySelector("#temperature-units-2").innerHTML = "°C";
     subHeading.innerHTML = `${celsius}`;
+    document.querySelector("#feels-like").innerHTML = `${celsiusFeelsLike}`;
   }
   function getFahrenheit(event) {
     document.querySelector("#temperature-units-1").innerHTML = "°F";
-    subHeading.innerHTML = `${temperature}`;
+    document.querySelector("#temperature-units-2").innerHTML = "°F";
+    subHeading.innerHTML = `${Math.round(temperature)}`;
+    document.querySelector("#feels-like").innerHTML = `${Math.round(
+      feelsLikeTemperature
+    )}`;
   }
   function temperatureButtons() {
     let celsiusButton = document.querySelector("#button-celsius");
@@ -128,20 +136,31 @@ form.addEventListener("submit", handleSubmit);
 function useLocationButton(event) {
   function displayCurrentLocationTemp(response) {
     console.log(response.data.name);
-    let temperature = Math.round(response.data.main.temp);
+    let temperature = response.data.main.temp;
+    let feelsLikeTemperature = response.data.main.feels_like;
     let cityName = response.data.name;
     document.querySelector("#heading-one").innerHTML = `${cityName}`;
-    document.querySelector("#current-temperature").innerHTML = `${temperature}`;
-    document.querySelector("#temperature-units").innerHTML = "°F";
+    document.querySelector("#current-temperature").innerHTML = `${Math.round(
+      temperature
+    )}`;
+    document.querySelector("#temperature-units-1").innerHTML = "°F";
+    document.querySelector("#temperature-units-2").innerHTML = "°F";
 
     function getCelsius(event) {
       let celsius = Math.round((5 / 9) * (temperature - 32));
-      temperatureHeading.innerHTML = `${celsius}`;
+      let celsiusFeelsLike = Math.round((5 / 9) * (feelsLikeTemperature - 32));
       document.querySelector("#temperature-units-1").innerHTML = "°C";
+      document.querySelector("#temperature-units-2").innerHTML = "°C";
+      temperatureHeading.innerHTML = `${celsius}`;
+      document.querySelector("#feels-like").innerHTML = `${celsiusFeelsLike}`;
     }
     function getFahrenheit(event) {
-      temperatureHeading.innerHTML = `${temperature}`;
+      temperatureHeading.innerHTML = `${Math.round(temperature)}`;
       document.querySelector("#temperature-units-1").innerHTML = "°F";
+      document.querySelector("#temperature-units-2").innerHTML = "°F";
+      document.querySelector("#feels-like").innerHTML = `${Math.round(
+        feelsLikeTemperature
+      )}`;
     }
 
     function temperatureButtons() {
