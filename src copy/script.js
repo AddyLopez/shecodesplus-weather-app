@@ -69,8 +69,10 @@ function displayWeatherConditions(response) {
     response.data.main.feels_like
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML =
-    Math.round(response.data.wind.speed) + "mph";
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#wind-units").innerHTML = " mph";
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
 }
@@ -91,6 +93,10 @@ function displayTemperature(response) {
     document.querySelector("#temperature-units-2").innerHTML = "°C";
     subHeading.innerHTML = `${celsius}`;
     document.querySelector("#feels-like").innerHTML = `${celsiusFeelsLike}`;
+    document.querySelector("#wind").innerHTML = Math.round(
+      response.data.wind.speed * 1.609
+    );
+    document.querySelector("#wind-units").innerHTML = " km/h";
   }
   function getFahrenheit(event) {
     document.querySelector("#temperature-units-1").innerHTML = "°F";
@@ -99,6 +105,10 @@ function displayTemperature(response) {
     document.querySelector("#feels-like").innerHTML = `${Math.round(
       feelsLikeTemperature
     )}`;
+    document.querySelector("#wind").innerHTML = Math.round(
+      response.data.wind.speed
+    );
+    document.querySelector("#wind-units").innerHTML = " mph";
   }
   function temperatureButtons() {
     let celsiusButton = document.querySelector("#button-celsius");
@@ -153,6 +163,10 @@ function useLocationButton(event) {
       document.querySelector("#temperature-units-2").innerHTML = "°C";
       temperatureHeading.innerHTML = `${celsius}`;
       document.querySelector("#feels-like").innerHTML = `${celsiusFeelsLike}`;
+      document.querySelector("#wind").innerHTML = Math.round(
+        response.data.wind.speed * 1.609
+      );
+      document.querySelector("#wind-units").innerHTML = " km/h";
     }
     function getFahrenheit(event) {
       temperatureHeading.innerHTML = `${Math.round(temperature)}`;
@@ -161,6 +175,10 @@ function useLocationButton(event) {
       document.querySelector("#feels-like").innerHTML = `${Math.round(
         feelsLikeTemperature
       )}`;
+      document.querySelector("#wind").innerHTML = Math.round(
+        response.data.wind.speed
+      );
+      document.querySelector("#wind-units").innerHTML = " mph";
     }
 
     function temperatureButtons() {
