@@ -82,7 +82,7 @@ function displayTemperature(response) {
   let temperature = response.data.main.temp;
   let feelsLikeTemperature = response.data.main.feels_like;
   let subHeading = document.querySelector("#current-temperature");
-  subHeading.innerHTML = `${Math.round(temperature)}`;
+  subHeading.innerHTML = Math.round(temperature);
   document.querySelector("#temperature-units-1").innerHTML = "°F";
   document.querySelector("#temperature-units-2").innerHTML = "°F";
 
@@ -101,10 +101,9 @@ function displayTemperature(response) {
   function getFahrenheit(event) {
     document.querySelector("#temperature-units-1").innerHTML = "°F";
     document.querySelector("#temperature-units-2").innerHTML = "°F";
-    subHeading.innerHTML = `${Math.round(temperature)}`;
-    document.querySelector("#feels-like").innerHTML = `${Math.round(
-      feelsLikeTemperature
-    )}`;
+    subHeading.innerHTML = Math.round(temperature);
+    document.querySelector("#feels-like").innerHTML =
+      Math.round(feelsLikeTemperature);
     document.querySelector("#wind").innerHTML = Math.round(
       response.data.wind.speed
     );
@@ -150,9 +149,8 @@ function useLocationButton(event) {
     let feelsLikeTemperature = response.data.main.feels_like;
     let cityName = response.data.name;
     document.querySelector("#heading-one").innerHTML = `${cityName}`;
-    document.querySelector("#current-temperature").innerHTML = `${Math.round(
-      temperature
-    )}`;
+    document.querySelector("#current-temperature").innerHTML =
+      Math.round(temperature);
     document.querySelector("#temperature-units-1").innerHTML = "°F";
     document.querySelector("#temperature-units-2").innerHTML = "°F";
 
@@ -172,9 +170,8 @@ function useLocationButton(event) {
       temperatureHeading.innerHTML = `${Math.round(temperature)}`;
       document.querySelector("#temperature-units-1").innerHTML = "°F";
       document.querySelector("#temperature-units-2").innerHTML = "°F";
-      document.querySelector("#feels-like").innerHTML = `${Math.round(
-        feelsLikeTemperature
-      )}`;
+      document.querySelector("#feels-like").innerHTML =
+        Math.round(feelsLikeTemperature);
       document.querySelector("#wind").innerHTML = Math.round(
         response.data.wind.speed
       );
