@@ -1,3 +1,30 @@
+function displayDate() {
+  let dateToday = new Date();
+
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[dateToday.getMonth()];
+  let date = dateToday.getDate();
+  let year = dateToday.getFullYear();
+  console.log(month, date, year);
+  document.querySelector("#month").innerHTML = `${month}`;
+  document.querySelector("#date").innerHTML = `${date}`;
+  document.querySelector("#year").innerHTML = `${year}`;
+}
+displayDate();
+
 function displayDayAndTime() {
   let currentDate = new Date();
   let days = [
