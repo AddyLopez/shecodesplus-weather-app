@@ -24,6 +24,10 @@ input {
   text-align: center;
   width: 63%;
 }
+img {
+  max-width: 73px;
+  max-height: 73px;
+}
 
 ul {
   list-style: none;

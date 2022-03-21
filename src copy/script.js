@@ -70,6 +70,10 @@ function displayWeatherConditions(response) {
     Math.round(response.data.wind.speed) + "mph";
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
+  let icon = response.data.weather[0].icon;
+  document.querySelector(
+    "#main-icon"
+  ).innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
 }
 
 function displayTemperature(response) {
