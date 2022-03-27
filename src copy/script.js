@@ -208,9 +208,10 @@ function useLocationButton(event) {
     let temperature = response.data.main.temp;
     let feelsLikeTemperature = response.data.main.feels_like;
     let cityName = response.data.name;
+    let subHeading = document.querySelector("#current-temperature");
+    subHeading.innerHTML = Math.round(temperature);
     document.querySelector("#heading-one").innerHTML = `${cityName}`;
-    document.querySelector("#current-temperature").innerHTML =
-      Math.round(temperature);
+
     document.querySelector("#temperature-units-1").innerHTML = "°F";
     document.querySelector("#temperature-units-2").innerHTML = "°F";
 
@@ -219,7 +220,7 @@ function useLocationButton(event) {
       let celsiusFeelsLike = Math.round((5 / 9) * (feelsLikeTemperature - 32));
       document.querySelector("#temperature-units-1").innerHTML = "°C";
       document.querySelector("#temperature-units-2").innerHTML = "°C";
-      temperatureHeading.innerHTML = `${celsius}`;
+      subHeading.innerHTML = `${celsius}`;
       document.querySelector("#feels-like").innerHTML = `${celsiusFeelsLike}`;
       document.querySelector("#wind").innerHTML = Math.round(
         response.data.wind.speed * 1.609
@@ -227,7 +228,7 @@ function useLocationButton(event) {
       document.querySelector("#wind-units").innerHTML = " km/h";
     }
     function getFahrenheit(event) {
-      temperatureHeading.innerHTML = `${Math.round(temperature)}`;
+      subHeading.innerHTML = `${Math.round(temperature)}`;
       document.querySelector("#temperature-units-1").innerHTML = "°F";
       document.querySelector("#temperature-units-2").innerHTML = "°F";
       document.querySelector("#feels-like").innerHTML =
@@ -245,6 +246,7 @@ function useLocationButton(event) {
       fahrenheitButton.addEventListener("click", getFahrenheit);
     }
     temperatureButtons();
+    displayWeatherConditions(response);
   }
 
   function getCurrentLocation(position) {
