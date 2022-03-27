@@ -77,6 +77,43 @@ function displayWeatherConditions(response) {
     response.data.weather[0].description;
 }
 
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let weekdays = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"];
+  weekdays.forEach(function (weekday) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-5 neutral">
+        <p>
+          <span class="weekday">${weekday}</span>
+          <br />
+         <img
+          src="https://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather icon"
+              />
+          <br />
+           HIGH: <span id="temperature-high">42</span
+          ><span id="temperature-units-3">°F</span>
+            <br />
+            LOW: <span id="temperature-low">29</span><span id="temperature-units-4">°F</span>
+            </p>
+            </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = `59446b2366c35cbe45d81fb3e3545297`;
+  let units = `imperial`;
+  let lat = coordinates.lat;
+  let lon = coordinates.lon;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  console.log(apiUrl);
+}
+
 function displayTemperature(response) {
   console.log(response.data);
   let temperature = response.data.main.temp;
@@ -117,6 +154,7 @@ function displayTemperature(response) {
   }
   temperatureButtons();
   displayWeatherConditions(response);
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -195,41 +233,6 @@ function useLocationButton(event) {
     axios.get(apiUrl).then(displayCurrentLocationTemp);
   }
   navigator.geolocation.getCurrentPosition(getCurrentLocation);
-}
-
-function displayForecast() {
-  let forecast = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row">`;
-  let weekdays = [
-    "MONDAY",
-    "TUESDAY",
-    "WEDNESDAY",
-    "THURSDAY",
-    "FRIDAY",
-    "SATURDAY",
-    "SUNDAY",
-  ];
-  weekdays.forEach(function (weekday) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-5 neutral">
-        <p>
-          <span class="weekday">MONDAY</span>
-          <br />
-         <img
-          src="https://openweathermap.org/img/wn/10d@2x.png"
-                alt="weather icon"
-              />
-          <br />
-           HIGH: <span id="temperature-high">42</span
-          ><span id="temperature-units-3">°F</span>
-            <br />
-            LOW: <span id="temperature-low">29</span><span id="temperature-units-4">°F</span>
-            </p>
-            </div>`;
-  });
-  forecastHTML = forecastHTML + `</div>`;
-  forecast.innerHTML = forecastHTML;
 }
 
 let form = document.querySelector("#search-form");
