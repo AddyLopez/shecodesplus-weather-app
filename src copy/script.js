@@ -204,7 +204,7 @@ function handleSubmit(event) {
 
 function useLocationButton(event) {
   function displayCurrentLocationTemp(response) {
-    console.log(response.data.name);
+    console.log(response.data);
     let temperature = response.data.main.temp;
     let feelsLikeTemperature = response.data.main.feels_like;
     let cityName = response.data.name;
@@ -247,6 +247,7 @@ function useLocationButton(event) {
     }
     temperatureButtons();
     displayWeatherConditions(response);
+    getForecast(response.data.coord);
   }
 
   function getCurrentLocation(position) {
