@@ -60,6 +60,21 @@ function displayWeekdayAndTime() {
   }
 }
 
+function formatForecastDate(timestamp) {
+  let forecastDate = new Date(timestamp * 1000);
+  let forecastDay = forecastDate.getDay();
+  let forecastDays = [
+    "SUNDAY",
+    "MONDAY",
+    "TUESDAY",
+    "WEDNESDAY",
+    "THURSDAY",
+    "FRIDAY",
+    "SATURDAY",
+  ];
+  return forecastDays[forecastDay];
+}
+
 function displayWeatherConditions(response) {
   let icon = response.data.weather[0].icon;
   document.querySelector(
@@ -78,6 +93,7 @@ function displayWeatherConditions(response) {
 }
 
 function displayForecast(response) {
+  console.log(response.data);
   let forecastData = response.data.daily;
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
@@ -88,10 +104,12 @@ function displayForecast(response) {
         forecastHTML +
         `<div class="col-5 neutral">
         <p>
-          <span class="weekday">${forecastDay.dt}</span>
+          <span class="weekday">${formatForecastDate(forecastDay.dt)}</span>
           <br />
          <img
-          src="https://openweathermap.org/img/wn/10d@2x.png"
+          src="https://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
                 alt="weather icon"
               />
           <br />
@@ -251,4 +269,3 @@ locationButton.addEventListener("click", useLocationButton);
 displayDate();
 displayWeekdayAndTime();
 searchCity("New York");
-displayForecast();
