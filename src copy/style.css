@@ -50,12 +50,15 @@ a {
   font-size: 13px;
   font-weight: bold;
   display: block;
-  margin: 5px;
+  margin-right: 5px;
   text-align: right;
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
+}
+.link-one {
+  margin-top: 5px;
 }
 .col-4 {
   margin: 0;
