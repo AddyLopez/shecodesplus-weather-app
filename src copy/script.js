@@ -139,9 +139,6 @@ function handleSubmit(event) {
   searchCity(cityInputValue);
 }
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
-
 function useLocationButton(event) {
   function displayCurrentLocationTemp(response) {
     console.log(response.data.name);
@@ -199,6 +196,11 @@ function useLocationButton(event) {
   }
   navigator.geolocation.getCurrentPosition(getCurrentLocation);
 }
+
+function displayForecast() {}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
 
 let locationButton = document.querySelector("#location-button");
 locationButton.addEventListener("click", useLocationButton);
