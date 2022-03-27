@@ -197,7 +197,40 @@ function useLocationButton(event) {
   navigator.geolocation.getCurrentPosition(getCurrentLocation);
 }
 
-function displayForecast() {}
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let weekdays = [
+    "MONDAY",
+    "TUESDAY",
+    "WEDNESDAY",
+    "THURSDAY",
+    "FRIDAY",
+    "SATURDAY",
+    "SUNDAY",
+  ];
+  weekdays.forEach(function (weekday) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-5 neutral">
+        <p>
+          <span class="weekday">MONDAY</span>
+          <br />
+         <img
+          src="https://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather icon"
+              />
+          <br />
+           HIGH: <span id="temperature-high">42</span
+          ><span id="temperature-units-3">°F</span>
+            <br />
+            LOW: <span id="temperature-low">29</span><span id="temperature-units-4">°F</span>
+            </p>
+            </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
@@ -208,3 +241,4 @@ locationButton.addEventListener("click", useLocationButton);
 displayDate();
 displayWeekdayAndTime();
 searchCity("New York");
+displayForecast();
