@@ -108,6 +108,7 @@ li.last-updated {
 }
 
 .container {
+  font-family: "Rock Salt", cursive;
   margin: 40px auto;
   max-width: 900px;
   padding: 0;
@@ -118,7 +119,6 @@ li.last-updated {
   border: 4px solid #ffa73a47;
   border-radius: 10px;
   box-shadow: 1px 1px 1px #71a3e1;
-  font-family: "Rock Salt", cursive;
   padding: 20px;
 }
 .search-results {
@@ -128,7 +128,7 @@ li.last-updated {
   box-shadow: 1px 1px 30px #fd741f;
   line-height: 20px;
   margin: 0 auto 15px auto;
-  max-width: 750px;
+  max-width: 760px;
   padding: 25px;
 }
 .search-results:hover {
@@ -140,13 +140,12 @@ li.last-updated {
   border: 4px solid #ffd55b;
   border-radius: 4px;
   box-shadow: 2px 2px 15px #fd741f;
-  font-family: "Covered By Your Grace", cursive;
-  font-size: 27px;
-  font-weight: bolder;
-  line-height: 38px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 30px;
   margin: 0 auto;
   max-width: 118px;
-  padding: 17px 0px;
+  padding: 25px 0 10px 0;
   text-align: center;
 }
 .col-5:hover {
@@ -169,7 +168,8 @@ li.last-updated {
   background-color: #558bcfd4;
 }
 .weekday {
-  font-size: 24px;
+  letter-spacing: 1px;
+  font-size: 15px;
 }
 .fa-solid {
   font-size: 44px;
@@ -197,11 +197,11 @@ li.last-updated {
 }
 .button-group {
   position: relative;
-  right: -9px;
+  right: -18px;
   top: -2px;
 }
 .single-button {
   position: relative;
-  left: 6px;
+  left: 11px;
   top: -10px;
 }

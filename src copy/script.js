@@ -64,13 +64,13 @@ function formatForecastDate(timestamp) {
   let forecastDate = new Date(timestamp * 1000);
   let forecastDay = forecastDate.getDay();
   let forecastDays = [
-    "SUNDAY",
-    "MONDAY",
-    "TUESDAY",
-    "WEDNESDAY",
-    "THURSDAY",
-    "FRIDAY",
-    "SATURDAY",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
   ];
   return forecastDays[forecastDay];
 }
@@ -113,12 +113,12 @@ function displayForecast(response) {
                 alt="weather icon"
               />
           <br />
-           HIGH: <span id="temperature-high">${Math.round(
+           High: <span id="temperature-high">${Math.round(
              forecastDay.temp.max
            )}</span
           ><span id="temperature-units-3">°F</span>
             <br />
-            LOW: <span id="temperature-low">${Math.round(
+            Low: <span id="temperature-low">${Math.round(
               forecastDay.temp.min
             )}</span><span id="temperature-units-4">°F</span>
             </p>
