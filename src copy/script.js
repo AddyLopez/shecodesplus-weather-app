@@ -99,7 +99,7 @@ function displayForecast(response) {
   let forecastHTML = `<div class="row">`;
 
   forecastData.forEach(function (forecastDay, index) {
-    if (index > 0 && index < 6) {
+    if (index < 7) {
       forecastHTML =
         forecastHTML +
         `<div class="col-5 neutral">

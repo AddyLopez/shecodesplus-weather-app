@@ -29,7 +29,9 @@ img {
 
 ul {
   font-size: 14px;
-  line-height: 28px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 26px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -84,7 +86,7 @@ a:hover {
   right: 5px;
 }
 li.temperature-heading {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
   line-height: 32px;
   letter-spacing: 2px;
@@ -95,19 +97,19 @@ li.description {
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
-  line-height: 30px;
-  padding: 5px 0 10px 0;
+  line-height: 25px;
+  padding: 5px 0 0 0;
   text-align: center;
   text-transform: lowercase;
 }
 li.last-updated {
-  font-size: 15px;
+  font-size: 16px;
   letter-spacing: 2px;
 }
 
 .container {
   margin: 40px auto;
-  max-width: 650px;
+  max-width: 900px;
   padding: 0;
 }
 
@@ -126,8 +128,8 @@ li.last-updated {
   box-shadow: 1px 1px 30px #fd741f;
   line-height: 20px;
   margin: 0 auto 15px auto;
-  max-width: 615px;
-  padding: 12px;
+  max-width: 750px;
+  padding: 25px;
 }
 .search-results:hover {
   background-color: #ffefdf;
