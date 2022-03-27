@@ -211,7 +211,6 @@ function useLocationButton(event) {
     let subHeading = document.querySelector("#current-temperature");
     subHeading.innerHTML = Math.round(temperature);
     document.querySelector("#heading-one").innerHTML = `${cityName}`;
-
     document.querySelector("#temperature-units-1").innerHTML = "°F";
     document.querySelector("#temperature-units-2").innerHTML = "°F";
 

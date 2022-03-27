@@ -200,3 +200,8 @@ li.last-updated {
   left: 6px;
   top: -10px;
 }
+.main-high-low {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
