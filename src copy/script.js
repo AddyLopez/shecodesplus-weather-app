@@ -93,7 +93,6 @@ function displayWeatherConditions(response) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
   let forecastData = response.data.daily;
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
@@ -116,11 +115,11 @@ function displayForecast(response) {
            High: <span id="temperature-high">${Math.round(
              forecastDay.temp.max
            )}</span
-          ><span id="temperature-units-3">°F</span>
+          ><span class="temperature-units-3">°F</span>
             <br />
             Low: <span id="temperature-low">${Math.round(
               forecastDay.temp.min
-            )}</span><span id="temperature-units-4">°F</span>
+            )}</span><span class="temperature-units-4">°F</span>
             </p>
             </div>`;
     }
@@ -128,6 +127,33 @@ function displayForecast(response) {
 
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
+
+  function getCelsius(event) {
+    function showCelsius(unitsElement) {
+      unitsElement.innerHTML = "°C";
+    }
+    unitsHigh = document.querySelectorAll(".temperature-units-3");
+    unitsLow = document.querySelectorAll(".temperature-units-4");
+    unitsHigh.forEach(showCelsius);
+    unitsLow.forEach(showCelsius);
+  }
+  function getFahrenheit(event) {
+    function showFahrenheit(unitsElement) {
+      unitsElement.innerHTML = "°F";
+    }
+    unitsHigh = document.querySelectorAll(".temperature-units-3");
+    unitsLow = document.querySelectorAll(".temperature-units-4");
+    unitsHigh.forEach(showFahrenheit);
+    unitsLow.forEach(showFahrenheit);
+  }
+
+  function temperatureButtons() {
+    let celsiusButton = document.querySelector("#button-celsius");
+    let fahrenheitButton = document.querySelector("#button-fahrenheit");
+    celsiusButton.addEventListener("click", getCelsius);
+    fahrenheitButton.addEventListener("click", getFahrenheit);
+  }
+  temperatureButtons();
 }
 
 function getForecast(coordinates) {
