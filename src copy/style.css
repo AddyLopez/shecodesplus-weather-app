@@ -122,8 +122,8 @@ li.last-updated {
   padding: 20px;
 }
 .search-results {
-  background-color: #ffefdfab;
-  border: 6px solid #ffa2155e;
+  background: linear-gradient(to top, #d7f0fbf2 0%, #9fdcf9 100%);
+  border: 6px solid #ffd55b;
   border-radius: 10px;
   box-shadow: 1px 1px 30px #fd741f;
   line-height: 20px;
@@ -132,7 +132,7 @@ li.last-updated {
   padding: 25px;
 }
 .search-results:hover {
-  background-color: #ffefdf;
+  background-color: #fe9145f2;
   transition: all 800ms ease-out;
 }
 .col-5 {
@@ -148,35 +148,35 @@ li.last-updated {
   text-align: center;
 }
 .col-5:hover {
-  background-color: #ffefdfab;
+  background-color: #fe9145f2;
   transition: all 800ms ease-out;
 }
 .snow-icons {
-  background-color: #d8e5f7;
+  background: linear-gradient(180deg, rgb(207 207 207) 0%, #ffffff 100%);
 }
 .haze-icons {
-  background-color: #6ca5ed73;
+  background: linear-gradient(180deg, #e9d4b4 0%, #7676768a 100%);
 }
 .thunderstorm-icons {
-  background-color: #688ab5d4;
+  background: linear-gradient(180deg, #747272 0%, #b5b5e1 100%);
 }
 .rain-icons {
-  background-color: #4f8fc5e0;
+  background: linear-gradient(180deg, #e5ddddeb 0%, rgb(25 131 173) 100%);
 }
 .drizzle-icons {
-  background-color: #538bd5d4;
+  background: linear-gradient(180deg, #c7c8c9eb 0%, #2c5ea1d9 100%);
 }
 .broken-clouds-icons {
-  background-color: #819fe3f2;
+  background: linear-gradient(180deg, #e0e5f3 0%, #5a84e5f2 100%);
 }
 .scattered-clouds-icons {
-  background-color: #3f8df5;
+  background: linear-gradient(180deg, rgb(190 205 249) 0%, #2683ff 100%);
 }
 .few-clouds-icons {
-  background-color: #9ed6ffeb;
+  background: linear-gradient(180deg, #91d1f7 0%, #e4f0f9 100%);
 }
 .clear-sky-icons {
-  background-color: #36c3f9f2;
+  background: linear-gradient(180deg, #02b6fbf2 0%, #9be3fff2 100%);
 }
 .weekday {
   letter-spacing: 1px;
