@@ -299,6 +299,88 @@ function displayWeatherConditions(response) {
   document.querySelector("#wind-units").innerHTML = " mph";
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
+
+  function displayMainBackground() {
+    let icons = [
+      "01d",
+      "01n",
+      "02d",
+      "02n",
+      "03d",
+      "03n",
+      "04d",
+      "04n",
+      "09d",
+      "09n",
+      "10d",
+      "10n",
+      "11d",
+      "11n",
+      "50d",
+      "50n",
+      "13d",
+      "13n",
+    ];
+    console.log(icons);
+    let mainBackground = document.querySelector("#main-background");
+    if (icon === icons[0] || icon === icons[1]) {
+      mainBackground.setAttribute("class", "search-results clear-sky-icons");
+    } else {
+      if (icon === icons[2] || icon === icons[3]) {
+        mainBackground.setAttribute("class", "search-results few-clouds-icons");
+      } else {
+        if (icon === icons[4] || icon === icons[5]) {
+          mainBackground.setAttribute(
+            "class",
+            "search-results scattered-clouds-icons"
+          );
+        } else {
+          if (icon === icons[6] || icon === icons[7]) {
+            mainBackground.setAttribute(
+              "class",
+              "search-results broken-clouds-icons"
+            );
+          } else {
+            if (icon === icons[8] || icon === icons[9]) {
+              mainBackground.setAttribute(
+                "class",
+                "search-results drizzle-icons"
+              );
+            } else {
+              if (icon === icons[10] || icon === icons[11]) {
+                mainBackground.setAttribute(
+                  "class",
+                  "search-results rain-icons"
+                );
+              } else {
+                if (icon === icons[12] || icon === icons[13]) {
+                  mainBackground.setAttribute(
+                    "class",
+                    "search-results thunderstorm-icons"
+                  );
+                } else {
+                  if (icon === icons[14] || icon === icons[15]) {
+                    mainBackground.setAttribute(
+                      "class",
+                      "search-results haze-icons"
+                    );
+                  } else {
+                    if (icon === icons[16] || icon === icons[17]) {
+                      mainBackground.setAttribute(
+                        "class",
+                        "search-results snow-icons"
+                      );
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  displayMainBackground();
 }
 
 function displayTemperature(response) {
