@@ -94,6 +94,7 @@ function displayWeatherConditions(response) {
 
 function displayForecast(response) {
   let forecastData = response.data.daily;
+  console.log(forecastData);
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
@@ -112,14 +113,14 @@ function displayForecast(response) {
                 alt="weather icon"
               />
           <br />
-           High: <span id="temperature-high">${Math.round(
-             forecastDay.temp.max
-           )}</span
+           High: <span class="temperature-high-${index}">${Math.round(
+          forecastDay.temp.max
+        )}</span
           ><span class="temperature-units-3">°F</span>
             <br />
-            Low: <span id="temperature-low">${Math.round(
-              forecastDay.temp.min
-            )}</span><span class="temperature-units-4">°F</span>
+            Low: <span class="temperature-low-${index}">${Math.round(
+          forecastDay.temp.min
+        )}</span><span class="temperature-units-4">°F</span>
             </p>
             </div>`;
     }
@@ -129,22 +130,66 @@ function displayForecast(response) {
   forecast.innerHTML = forecastHTML;
 
   function getCelsius(event) {
-    function showCelsius(unitsElement) {
+    function showCelsiusUnits(unitsElement) {
       unitsElement.innerHTML = "°C";
     }
-    unitsHigh = document.querySelectorAll(".temperature-units-3");
-    unitsLow = document.querySelectorAll(".temperature-units-4");
-    unitsHigh.forEach(showCelsius);
-    unitsLow.forEach(showCelsius);
+    function showCelsiusTemperature() {
+      forecastData.forEach(function (forecastDay, index) {
+        if (index < 7) {
+          console.log(
+            Math.round(forecastDay.temp.max),
+            Math.round(forecastDay.temp.min)
+          );
+          let celsiusHigh = document.querySelector(
+            `.temperature-high-${index}`
+          );
+          let celsiusLow = document.querySelector(`.temperature-low-${index}`);
+          celsiusHigh.innerHTML = Math.round(
+            (5 / 9) * (forecastDay.temp.max - 32)
+          );
+          celsiusLow.innerHTML = Math.round(
+            (5 / 9) * (forecastDay.temp.min - 32)
+          );
+          console.log(celsiusHigh, celsiusLow);
+        }
+      });
+    }
+
+    let unitsHigh = document.querySelectorAll(".temperature-units-3");
+    let unitsLow = document.querySelectorAll(".temperature-units-4");
+    unitsHigh.forEach(showCelsiusUnits);
+    unitsLow.forEach(showCelsiusUnits);
+    showCelsiusTemperature();
   }
+
   function getFahrenheit(event) {
-    function showFahrenheit(unitsElement) {
+    function showFahrenheitUnits(unitsElement) {
       unitsElement.innerHTML = "°F";
     }
-    unitsHigh = document.querySelectorAll(".temperature-units-3");
-    unitsLow = document.querySelectorAll(".temperature-units-4");
-    unitsHigh.forEach(showFahrenheit);
-    unitsLow.forEach(showFahrenheit);
+    function showFahrenheitTemperature() {
+      forecastData.forEach(function (forecastDay, index) {
+        if (index < 7) {
+          console.log(
+            Math.round(forecastDay.temp.max),
+            Math.round(forecastDay.temp.min)
+          );
+          let fahrenheitHigh = document.querySelector(
+            `.temperature-high-${index}`
+          );
+          let fahrenheitLow = document.querySelector(
+            `.temperature-low-${index}`
+          );
+          fahrenheitHigh.innerHTML = Math.round(forecastDay.temp.max);
+          fahrenheitLow.innerHTML = Math.round(forecastDay.temp.min);
+        }
+      });
+    }
+
+    let unitsHigh = document.querySelectorAll(".temperature-units-3");
+    let unitsLow = document.querySelectorAll(".temperature-units-4");
+    unitsHigh.forEach(showFahrenheitUnits);
+    unitsLow.forEach(showFahrenheitUnits);
+    showFahrenheitTemperature();
   }
 
   function temperatureButtons() {
