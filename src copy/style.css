@@ -136,7 +136,6 @@ li.last-updated {
   transition: all 800ms ease-out;
 }
 .col-5 {
-  background-color: #89bbf9d4;
   border: 4px solid #ffd55b;
   border-radius: 4px;
   box-shadow: 2px 2px 15px #fd741f;
@@ -162,19 +161,19 @@ li.last-updated {
   background-color: #688ab5d4;
 }
 .rain-icons {
-  background-color: #5184c5d4;
+  background-color: #4f8fc5e0;
 }
 .drizzle-icons {
   background-color: #538bd5d4;
 }
 .broken-clouds-icons {
-  background-color: #3e82ddd6;
+  background-color: #819fe3f2;
 }
 .scattered-clouds-icons {
-  background-color: #3f89ebd6;
+  background-color: #3f8df5;
 }
 .few-clouds-icons {
-  background-color: #36a8f9d9;
+  background-color: #9ed6ffeb;
 }
 .clear-sky-icons {
   background-color: #36c3f9f2;

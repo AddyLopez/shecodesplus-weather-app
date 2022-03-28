@@ -75,26 +75,8 @@ function formatForecastDate(timestamp) {
   return forecastDays[forecastDay];
 }
 
-function displayWeatherConditions(response) {
-  let icon = response.data.weather[0].icon;
-  document.querySelector(
-    "#main-icon"
-  ).innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
-  document.querySelector("#feels-like").innerHTML = Math.round(
-    response.data.main.feels_like
-  );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-  document.querySelector("#wind-units").innerHTML = " mph";
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].description;
-}
-
 function displayForecast(response) {
   let forecastData = response.data.daily;
-  console.log(forecastData);
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
@@ -102,7 +84,7 @@ function displayForecast(response) {
     if (index < 7) {
       forecastHTML =
         forecastHTML +
-        `<div class="col-5 neutral">
+        `<div class="col-5 column-${index}">
         <p>
           <span class="weekday">${formatForecastDate(forecastDay.dt)}</span>
           <br />
@@ -128,6 +110,96 @@ function displayForecast(response) {
 
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
+
+  function formatColumns() {
+    let icons = [
+      "01d",
+      "01n",
+      "02d",
+      "02n",
+      "03d",
+      "03n",
+      "04d",
+      "04n",
+      "09d",
+      "09n",
+      "10d",
+      "10n",
+      "11d",
+      "11n",
+      "50d",
+      "50n",
+      "13d",
+      "13n",
+    ];
+    console.log(icons);
+    forecastData.forEach(function (forecastDay, index) {
+      if (index < 7) {
+        console.log(forecastDay.weather[0].icon);
+        let column = document.querySelector(`.column-${index}`);
+        let icon = forecastDay.weather[0].icon;
+        if (icon === icons[0] || icon === icons[1]) {
+          column.setAttribute("class", `col-5 column-${index} clear-sky-icons`);
+        } else {
+          if (icon === icons[2] || icon === icons[3]) {
+            column.setAttribute(
+              "class",
+              `col-5 column-${index} few-clouds-icons`
+            );
+          } else {
+            if (icon === icons[4] || icon === icons[5]) {
+              column.setAttribute(
+                "class",
+                `col-5 column-${index} scattered-clouds-icons`
+              );
+            } else {
+              if (icon === icons[6] || icon === icons[7]) {
+                column.setAttribute(
+                  "class",
+                  `col-5 column-${index} broken-clouds-icons`
+                );
+              } else {
+                if (icon === icons[8] || icon === icons[9]) {
+                  column.setAttribute(
+                    "class",
+                    `col-5 column-${index} drizzle-icons`
+                  );
+                } else {
+                  if (icon === icons[10] || icon === icons[11]) {
+                    column.setAttribute(
+                      "class",
+                      `col-5 column-${index} rain-icons`
+                    );
+                  } else {
+                    if (icon === icons[12] || icon === icons[13]) {
+                      column.setAttribute(
+                        "class",
+                        `col-5 column-${index} thunderstorm-icons`
+                      );
+                    } else {
+                      if (icon === icons[14] || icon === icons[15]) {
+                        column.setAttribute(
+                          "class",
+                          `col-5 column-${index} haze-icons`
+                        );
+                      } else {
+                        if (icon === icons[16] || icon === icons[17]) {
+                          column.setAttribute(
+                            "class",
+                            `col-5 column-${index} snow-icons`
+                          );
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+  }
 
   function getCelsius(event) {
     function showCelsiusUnits(unitsElement) {
@@ -159,6 +231,7 @@ function displayForecast(response) {
     let unitsLow = document.querySelectorAll(".temperature-units-4");
     unitsHigh.forEach(showCelsiusUnits);
     unitsLow.forEach(showCelsiusUnits);
+
     showCelsiusTemperature();
   }
 
@@ -199,6 +272,7 @@ function displayForecast(response) {
     fahrenheitButton.addEventListener("click", getFahrenheit);
   }
   temperatureButtons();
+  formatColumns();
 }
 
 function getForecast(coordinates) {
@@ -208,6 +282,23 @@ function getForecast(coordinates) {
   let lon = coordinates.lon;
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
   axios.get(apiUrl).then(displayForecast);
+}
+
+function displayWeatherConditions(response) {
+  let icon = response.data.weather[0].icon;
+  document.querySelector(
+    "#main-icon"
+  ).innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
+  document.querySelector("#feels-like").innerHTML = Math.round(
+    response.data.main.feels_like
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#wind-units").innerHTML = " mph";
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].description;
 }
 
 function displayTemperature(response) {
