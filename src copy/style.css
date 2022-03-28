@@ -152,48 +152,36 @@ li.last-updated {
   background-color: #ffefdfab;
   transition: all 800ms ease-out;
 }
-.neutral {
-  background-color: #b4cff1;
+.snow-icons {
+  background-color: #d8e5f7;
 }
-.partly-cloudy {
+.haze-icons {
+  background-color: #6ca5ed73;
+}
+.thunderstorm-icons {
+  background-color: #688ab5d4;
+}
+.rain-icons {
+  background-color: #5184c5d4;
+}
+.drizzle-icons {
+  background-color: #538bd5d4;
+}
+.broken-clouds-icons {
+  background-color: #3e82ddd6;
+}
+.scattered-clouds-icons {
+  background-color: #3f89ebd6;
+}
+.few-clouds-icons {
   background-color: #36a8f9d9;
 }
-.sunny {
-  background-color: #89f4f9eb;
-}
-.gloomy {
-  background-color: #8eaed7d4;
-}
-.rainy {
-  background-color: #558bcfd4;
+.clear-sky-icons {
+  background-color: #36c3f9f2;
 }
 .weekday {
   letter-spacing: 1px;
   font-size: 15px;
-}
-.fa-solid {
-  font-size: 44px;
-}
-.fa-solid.fa-moon {
-  color: #082491e8;
-  position: relative;
-  top: 8px;
-  left: 3px;
-}
-.fa-solid.fa-cloud.cloudy {
-  color: #ffffff;
-}
-.fa-solid.fa-cloud-sun {
-  color: #f6f48a;
-}
-.fa-solid.fa-sun {
-  color: #ffff02;
-}
-.fa-solid.fa-cloud.overcast {
-  color: #828691;
-}
-.fa-solid.fa-cloud-rain {
-  color: #435d9b;
 }
 .button-group {
   position: relative;
