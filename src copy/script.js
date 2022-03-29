@@ -270,7 +270,8 @@ function getForecast(coordinates) {
   let units = `imperial`;
   let lat = coordinates.lat;
   let lon = coordinates.lon;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/onecall?";
+  let apiUrl = `${apiEndpoint}lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -289,7 +290,7 @@ function displayWeatherConditions(response) {
   let icon = response.data.weather[0].icon;
   document.querySelector(
     "#main-icon"
-  ).innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
+  ).innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
 
   function displayMainBackground() {
     let icons = [
