@@ -132,10 +132,8 @@ function displayForecast(response) {
       "13d",
       "13n",
     ];
-    console.log(icons);
     forecastData.forEach(function (forecastDay, index) {
       if (index < 7) {
-        console.log(forecastDay.weather[0].icon);
         let column = document.querySelector(`.column-${index}`);
         let icon = forecastDay.weather[0].icon;
         if (icon === icons[0] || icon === icons[1]) {
@@ -201,17 +199,13 @@ function displayForecast(response) {
     });
   }
 
-  function getCelsius(event) {
+  function getCelsius() {
     function showCelsiusUnits(unitsElement) {
       unitsElement.innerHTML = "°C";
     }
     function showCelsiusTemperature() {
       forecastData.forEach(function (forecastDay, index) {
         if (index < 7) {
-          console.log(
-            Math.round(forecastDay.temp.max),
-            Math.round(forecastDay.temp.min)
-          );
           let celsiusHigh = document.querySelector(
             `.temperature-high-${index}`
           );
@@ -222,7 +216,6 @@ function displayForecast(response) {
           celsiusLow.innerHTML = Math.round(
             (5 / 9) * (forecastDay.temp.min - 32)
           );
-          console.log(celsiusHigh, celsiusLow);
         }
       });
     }
@@ -235,17 +228,14 @@ function displayForecast(response) {
     showCelsiusTemperature();
   }
 
-  function getFahrenheit(event) {
+  function getFahrenheit() {
     function showFahrenheitUnits(unitsElement) {
       unitsElement.innerHTML = "°F";
     }
+
     function showFahrenheitTemperature() {
       forecastData.forEach(function (forecastDay, index) {
         if (index < 7) {
-          console.log(
-            Math.round(forecastDay.temp.max),
-            Math.round(forecastDay.temp.min)
-          );
           let fahrenheitHigh = document.querySelector(
             `.temperature-high-${index}`
           );
@@ -285,10 +275,6 @@ function getForecast(coordinates) {
 }
 
 function displayWeatherConditions(response) {
-  let icon = response.data.weather[0].icon;
-  document.querySelector(
-    "#main-icon"
-  ).innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.main.feels_like
   );
@@ -299,6 +285,11 @@ function displayWeatherConditions(response) {
   document.querySelector("#wind-units").innerHTML = " mph";
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
+
+  let icon = response.data.weather[0].icon;
+  document.querySelector(
+    "#main-icon"
+  ).innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
 
   function displayMainBackground() {
     let icons = [
@@ -321,7 +312,6 @@ function displayWeatherConditions(response) {
       "13d",
       "13n",
     ];
-    console.log(icons);
     let mainBackground = document.querySelector("#main-background");
     if (icon === icons[0] || icon === icons[1]) {
       mainBackground.setAttribute("class", "search-results clear-sky-icons");
@@ -384,7 +374,6 @@ function displayWeatherConditions(response) {
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   let temperature = response.data.main.temp;
   let feelsLikeTemperature = response.data.main.feels_like;
   let subHeading = document.querySelector("#current-temperature");
@@ -392,7 +381,7 @@ function displayTemperature(response) {
   document.querySelector("#temperature-units-1").innerHTML = "°F";
   document.querySelector("#temperature-units-2").innerHTML = "°F";
 
-  function getCelsius(event) {
+  function getCelsius() {
     let celsius = Math.round((5 / 9) * (temperature - 32));
     let celsiusFeelsLike = Math.round((5 / 9) * (feelsLikeTemperature - 32));
     document.querySelector("#temperature-units-1").innerHTML = "°C";
@@ -404,7 +393,8 @@ function displayTemperature(response) {
     );
     document.querySelector("#wind-units").innerHTML = " km/h";
   }
-  function getFahrenheit(event) {
+
+  function getFahrenheit() {
     document.querySelector("#temperature-units-1").innerHTML = "°F";
     document.querySelector("#temperature-units-2").innerHTML = "°F";
     subHeading.innerHTML = Math.round(temperature);
@@ -415,12 +405,14 @@ function displayTemperature(response) {
     );
     document.querySelector("#wind-units").innerHTML = " mph";
   }
+
   function temperatureButtons() {
     let celsiusButton = document.querySelector("#button-celsius");
     let fahrenheitButton = document.querySelector("#button-fahrenheit");
     celsiusButton.addEventListener("click", getCelsius);
     fahrenheitButton.addEventListener("click", getFahrenheit);
   }
+
   temperatureButtons();
   displayWeatherConditions(response);
   getForecast(response.data.coord);
@@ -442,13 +434,11 @@ function searchCity(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputValue = document.querySelector("#search-input").value;
-  console.log(cityInputValue);
   searchCity(cityInputValue);
 }
 
-function useLocationButton(event) {
+function useLocationButton() {
   function displayCurrentLocationTemp(response) {
-    console.log(response.data);
     let temperature = response.data.main.temp;
     let feelsLikeTemperature = response.data.main.feels_like;
     let cityName = response.data.name;
@@ -458,7 +448,7 @@ function useLocationButton(event) {
     document.querySelector("#temperature-units-1").innerHTML = "°F";
     document.querySelector("#temperature-units-2").innerHTML = "°F";
 
-    function getCelsius(event) {
+    function getCelsius() {
       let celsius = Math.round((5 / 9) * (temperature - 32));
       let celsiusFeelsLike = Math.round((5 / 9) * (feelsLikeTemperature - 32));
       document.querySelector("#temperature-units-1").innerHTML = "°C";
@@ -470,7 +460,8 @@ function useLocationButton(event) {
       );
       document.querySelector("#wind-units").innerHTML = " km/h";
     }
-    function getFahrenheit(event) {
+
+    function getFahrenheit() {
       subHeading.innerHTML = `${Math.round(temperature)}`;
       document.querySelector("#temperature-units-1").innerHTML = "°F";
       document.querySelector("#temperature-units-2").innerHTML = "°F";
@@ -488,6 +479,7 @@ function useLocationButton(event) {
       celsiusButton.addEventListener("click", getCelsius);
       fahrenheitButton.addEventListener("click", getFahrenheit);
     }
+
     temperatureButtons();
     displayWeatherConditions(response);
     getForecast(response.data.coord);
@@ -503,6 +495,7 @@ function useLocationButton(event) {
     let apiUrl = `${apiEndpoint}lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
     axios.get(apiUrl).then(displayCurrentLocationTemp);
   }
+
   navigator.geolocation.getCurrentPosition(getCurrentLocation);
 }
 
