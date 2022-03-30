@@ -77,6 +77,7 @@ function formatForecastDate(timestamp) {
 
 function displayForecast(response) {
   let forecastData = response.data.daily;
+  console.log(forecastData);
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
@@ -136,6 +137,8 @@ function displayForecast(response) {
       if (index < 7) {
         let column = document.querySelector(`.column-${index}`);
         let icon = forecastDay.weather[0].icon;
+        let iconId = forecastDay.weather[0].id;
+
         if (icon === icons[0] || icon === icons[1]) {
           column.setAttribute("class", `col-5 column-${index} clear-sky-icons`);
         } else {
@@ -175,7 +178,12 @@ function displayForecast(response) {
                         `col-5 column-${index} thunderstorm-icons`
                       );
                     } else {
-                      if (icon === icons[14] || icon === icons[15]) {
+                      if (
+                        (icon === icons[14] &&
+                          iconId !== 701 &&
+                          iconId !== 741) ||
+                        (icon === icons[15] && iconId !== 701 && iconId !== 741)
+                      ) {
                         column.setAttribute(
                           "class",
                           `col-5 column-${index} haze-icons`
@@ -186,6 +194,13 @@ function displayForecast(response) {
                             "class",
                             `col-5 column-${index} snow-icons`
                           );
+                        } else {
+                          if (iconId === 701 || iconId === 741) {
+                            column.setAttribute(
+                              "class",
+                              `col-5 column-${index} mist-fog-icons`
+                            );
+                          }
                         }
                       }
                     }
@@ -288,6 +303,8 @@ function displayWeatherConditions(response) {
     response.data.weather[0].description;
 
   let icon = response.data.weather[0].icon;
+  let iconId = response.data.weather[0].id;
+  console.log(iconId);
   document.querySelector(
     "#main-icon"
   ).innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
@@ -350,7 +367,10 @@ function displayWeatherConditions(response) {
                     "search-results thunderstorm-icons"
                   );
                 } else {
-                  if (icon === icons[14] || icon === icons[15]) {
+                  if (
+                    (icon === icons[14] && iconId !== 701 && iconId !== 741) ||
+                    (icon === icons[15] && iconId !== 701 && iconId !== 741)
+                  ) {
                     mainBackground.setAttribute(
                       "class",
                       "search-results haze-icons"
@@ -361,6 +381,13 @@ function displayWeatherConditions(response) {
                         "class",
                         "search-results snow-icons"
                       );
+                    } else {
+                      if (iconId === 701 || iconId === 741) {
+                        mainBackground.setAttribute(
+                          "class",
+                          "search-results mist-fog-icons"
+                        );
+                      }
                     }
                   }
                 }

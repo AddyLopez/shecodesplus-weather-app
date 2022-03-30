@@ -181,6 +181,9 @@ li.description {
 .snow-icons {
   background: linear-gradient(180deg, rgb(207 207 207) 0%, #ffffff 100%);
 }
+.mist-fog-icons {
+  background: linear-gradient(180deg, #86a5b1 0%, #f1f1f1 100%);
+}
 
 .button-group {
   position: relative;
