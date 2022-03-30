@@ -536,4 +536,4 @@ locationButton.addEventListener("click", useLocationButton);
 
 displayDate();
 displayWeekdayAndTime();
-searchCity("New York");
+searchCity("Albuquerque");
