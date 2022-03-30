@@ -436,6 +436,7 @@ function handleSubmit(event) {
   event.preventDefault();
   let cityInputValue = document.querySelector("#search-input").value;
   searchCity(cityInputValue);
+  document.querySelector("#search-form").reset();
 }
 
 function useLocationButton() {
