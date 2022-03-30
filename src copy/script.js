@@ -77,7 +77,7 @@ function formatForecastDate(timestamp) {
 
 function displayForecast(response) {
   let forecastData = response.data.daily;
-  console.log(forecastData);
+
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
@@ -304,7 +304,7 @@ function displayWeatherConditions(response) {
 
   let icon = response.data.weather[0].icon;
   let iconId = response.data.weather[0].id;
-  console.log(iconId);
+
   document.querySelector(
     "#main-icon"
   ).innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"/>`;
