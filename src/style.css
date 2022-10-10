@@ -53,10 +53,11 @@ button {
 }
 
 a {
+  color: #0367fc;
+  display: block;
   font-family: "Red Hat Mono", monospace;
   font-size: 13px;
   font-weight: bold;
-  display: block;
   margin-right: 5px;
   text-align: right;
   text-decoration: none;
