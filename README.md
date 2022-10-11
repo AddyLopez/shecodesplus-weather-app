@@ -47,4 +47,4 @@ This project is a dynamic weather application integrated the [OpenWeatherMap API
 
 ## Preview
 
-![Weather Application Preview](assets/weather-application-preview.png)
+![Weather Application Preview](src/assets/weather-application-preview.png)
