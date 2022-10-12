@@ -14,53 +14,53 @@ The display includes: full date and time of the last update; city name, current 
 
 #### HTML:
 
-    - Elements: h1, ul, li, p, form, input, img, div, span,  button, br, script, link, meta, title
+- Elements: h1, ul, li, p, form, input, img, div, span, button, br, script, link, meta, title
 
-    - Attributes: class, id, href, alt, src, rel, target, title, type, placeholder, autofocus, autocomplete, description
+- Attributes: class, id, href, alt, src, rel, target, title, type, placeholder, autofocus, autocomplete, description
 
-    - Imported custom font from Google Fonts
+- Imported custom font from Google Fonts
 
-    - Imported external stylesheets for CSS and Bootstrap CSS and external JavaScript file to respect the Single Responsibility Principle (or the separation of concerns)
+- Imported external stylesheets for CSS and Bootstrap CSS and external JavaScript file to respect the Single Responsibility Principle (or the separation of concerns)
 
 ---
 
 #### CSS:
 
-    - Properties: background (with linear gradient) background-color, border, border-radius, box-shadow, color, display, font-family, font-size, font-weight, letter-spacing, line-height, list-style, margin, max-height, max-width, padding, position, left, right, top, text-align, text-decoration, text-transform, width
+- Properties: background (with linear gradient) background-color, border, border-radius, box-shadow, color, display, font-family, font-size, font-weight, letter-spacing, line-height, list-style, margin, max-height, max-width, padding, position, left, right, top, text-align, text-decoration, text-transform, width
 
-    - Class selectors and pseudo-selectors (hover effects for heightened interactivity)
+- Class selectors and pseudo-selectors (hover effects for heightened interactivity)
 
-    - Bootstrap grid
+- Bootstrap grid
 
 ---
 
 #### JavaScript:
 
-    - Functions, variables, arrays, parameters, conditional statements (if, if/else), string interpolation with template literals, string concatenation, identity operator, logical operators, comparison operators, dot operator, ID selection/targeting, multiplication, division, subtraction, truthy values, bracket notation
+- Functions, variables, arrays, parameters, conditional statements (if, if/else), string interpolation with template literals, string concatenation, identity operator, logical operators, comparison operators, dot operator, ID selection/targeting, multiplication, division, subtraction, truthy values, bracket notation
 
-    - Methods: document.querySelector(), document.querySelectorAll(), Math.round(), .innerHTML, .get(), .then(), .getCurrentPosition() (the in-built Geolocation API), .addEventListener()  (with click events), .reset() , .preventDefault() , .setAttribute() , .new Date() , .getFullYear, .getMonth(), .getDate(), .getDay() , .getHours() , .getMinutes() , alert(), .forEach() loops
+- Methods: document.querySelector(), document.querySelectorAll(), Math.round(), .innerHTML, .get(), .then(), .getCurrentPosition() (the in-built Geolocation API), .addEventListener() (with click events), .reset() , .preventDefault() , .setAttribute() , .new Date() , .getFullYear, .getMonth(), .getDate(), .getDay() , .getHours() , .getMinutes() , alert(), .forEach() loops
 
-    - Sophisticated manipulation of global and block scope
+- Sophisticated manipulation of global and block scope
 
-    - OpenWeatherMap API integration using AJAX / Axios
+- OpenWeatherMap API integration using AJAX / Axios
 
-    - Clear, descriptive names straightforwardly indicating the purpose of each function
+- Clear, descriptive names straightforwardly indicating the purpose of each function
 
-    - Extensive debugging with console.log() method
+- Extensive debugging with console.log() method
 
 ---
 
 #### Accessibility, attribution, and workflow:
 
-    - Accessibility rating by Lighthouse audit: 100/100 for desktop; 100/100 for mobile devices
+- Accessibility rating by Lighthouse audit: 100/100 for desktop; 100/100 for mobile devices
 
-    - Proper attribution for the data is included directly beneath the display to boost the credibility of the application and to show a conscientious ethos of transparency in the public presentation of data online
+- Proper attribution for the data is included directly beneath the display to boost the credibility of the application and to show a conscientious ethos of transparency in the public presentation of data online
 
-    - Wireframe prototyping with InVision Freehand prior to coding (see below)
+- Wireframe prototyping with InVision Freehand prior to coding (see below)
 
-    - Coded in VS Code with tools for a professional development workflow and continuous deployment, such as Live Server, GitHub, and hosting on Netlify
+- Coded in VS Code with tools for a professional development workflow and continuous deployment, such as Live Server, GitHub, and hosting on Netlify
 
-    - GitHub repo includes this polished README using Markdown
+- GitHub repo includes this polished README using Markdown
 
 ## Special Features
 
