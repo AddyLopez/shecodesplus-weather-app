@@ -38,7 +38,7 @@ The display includes: full date and time of the last update; city name, current 
 
 - Functions, variables, arrays, parameters, conditional statements (if, if/else), string interpolation with template literals, string concatenation, identity operator, logical operators, comparison operators, dot operator, ID selection/targeting, multiplication, division, subtraction, truthy values, bracket notation
 
-- Methods: document.querySelector(), document.querySelectorAll(), Math.round(), .innerHTML, .get(), .then(), .getCurrentPosition() (the in-built Geolocation API), .addEventListener() (with click events), .reset() , .preventDefault() , .setAttribute() , .new Date() , .getFullYear, .getMonth(), .getDate(), .getDay() , .getHours() , .getMinutes() , alert(), .forEach() loops
+- Methods: document.querySelector(), document.querySelectorAll(), Math.round(), .innerHTML, .get(), .then(), .getCurrentPosition() (the in-built Geolocation API), .addEventListener() (with click events), .reset() , .preventDefault() , .setAttribute() , .new Date() , .getFullYear(), .getMonth(), .getDate(), .getDay() , .getHours() , .getMinutes() , alert(), .forEach() loops
 
 - Sophisticated manipulation of global and block scope
 
@@ -52,7 +52,7 @@ The display includes: full date and time of the last update; city name, current 
 
 #### Accessibility, attribution, and workflow:
 
-- Accessibility rating by Lighthouse audit: 100/100 for desktop; 100/100 for mobile devices
+- Accessibility rating by Lighthouse audit: 100/100 for desktop
 
 - Proper attribution for the data is included directly beneath the display to boost the credibility of the application and to show a conscientious ethos of transparency in the public presentation of data online
 
@@ -70,7 +70,7 @@ The display includes: full date and time of the last update; city name, current 
 
   - The first button triggers a geolocation function that will retrieve weather data based on the geographic coordinates of the user's device and update the entire display to reflect those data without refreshing the page.
 
-  - The other two buttons will convert all data from Fahrenheit (imperial units) to Celsius (metric units) or vice versa as many times as desired and without introducing errors. I am especially proud of figuring out this solution on my own in vanilla JavaScript, since our instructor believed that the conversion would introduce too much complexity into the assignment and did not show us students how to code this feature. Furthermore, he said that we would likely need to use React (e.g. React state management) to update the data dynamically on the page without refreshing the page.
+  - The other two buttons will convert all data from Fahrenheit (imperial units) to Celsius (metric units) or vice versa as many times as desired and without introducing errors. I am especially proud of figuring out this solution on my own in vanilla JavaScript, since our instructor believed that the conversion would introduce too much complexity into the assignment and did not show us students how to code this feature. Furthermore, he said that we would likely need to use React (e.g. React state management) to update the data dynamically without refreshing the page.
 
 - Finally, I want to draw attention to my configuration of the **date and time**. In JavaScript, I converted the months and days from numbers to their proper names to improve the legibility of the UI. Trickier still, however, was that I independently decided without instruction to convert the twenty-four-hour timestamp to a twelve-hour clock, the proper formatting of which required a lot of precision in accounting for every possible outcome. After subjecting this feature to extensive testing and debugging, I am proud that each datum at any part of the day or night is error-free. I tested the results of my code not only for accuracy but also with the layout of the text in mind so that the longer string lengths would not initiate a new line that altered the spacing of the main display.
 
